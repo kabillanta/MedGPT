@@ -1,3 +1,3 @@
 # MedGPT
- An AI powered personal medical tutor :)
+## An AI powered personal medical tutor :)
 
