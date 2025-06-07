@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown';  
 import '../App.css';
 
 function Chatbot() {
@@ -7,6 +8,7 @@ function Chatbot() {
   const [input, setInput] = useState('');
 
   const sendMessage = async () => {
+    setInput('');
     if (!input.trim()) return;
 
     const userMessage = { role: 'user', content: input };
@@ -27,12 +29,16 @@ function Chatbot() {
 
   return (
     <div className="medgpt-app">
-      <header className="medgpt-header">MEDGPT</header>
 
       <div className="medgpt-chat-box">
         {messages.map((msg, index) => (
           <div key={index} className={`medgpt-message ${msg.role}`}>
-            <strong>{msg.role === 'user' ? 'You' : 'MEDGPT'}:</strong> {msg.content}
+            <strong>{msg.role === 'user' ? "You" : 'MedGPT'}:</strong>
+            {msg.role === 'bot' ? (
+              <ReactMarkdown>{msg.content}</ReactMarkdown>
+            ) : (
+              <p>{msg.content}</p>
+            )}
           </div>
         ))}
       </div>
@@ -45,10 +51,10 @@ function Chatbot() {
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
         />
-        <button onClick={sendMessage}>Send</button>
+        <button onClick={sendMessage }>Send</button>
       </div>
     </div>
   );
 }
 
-export default Chatbot  ;
+export default Chatbot;
