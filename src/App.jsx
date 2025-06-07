@@ -22,7 +22,7 @@ function App() {
             className={`tab-button ${activeTab === 'notes' ? 'active' : ''}`}
             onClick={() => setActiveTab('notes')}
           >
-            📚 Smart Notes Uploader
+            📚 Smart Summarizer
           </button>
         </div>
 
@@ -35,9 +35,9 @@ function App() {
             </div>
           ) : (
             <div>
-              <h2>Smart Notes Uploader</h2>
-              <p>Upload your PDFs, lecture notes, or slides here.</p>
-              {/* Insert File Upload Logic */}
+              <h2>Smart Summarizer</h2>
+              <p>Upload your PDFs, lecture notes, or slides here to get summaries.</p>
+              {/* Component to be placed here*/}
               <input type="file" multiple />
             </div>
           )}
