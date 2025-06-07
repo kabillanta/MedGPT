@@ -3,14 +3,17 @@ from flask_cors import CORS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.schema import SystemMessage, HumanMessage, AIMessage
 import os
+from dotenv import load_dotenv
 
-model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-exp", api_key="AIzaSyDuWsamx71pxArF0k7oikZ_hc1qNDRqpjc")
+load_dotenv()
+
+model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-exp", api_key=os.getenv("GOOGLE_API_KEY"))
 
 app = Flask(__name__)
 CORS(app)
 
 chat_history = [SystemMessage(content=''' 
-You are MEDGPT, a helpful and knowledgeable AI assistant designed to support medical students in India. You specialize in simplifying complex medical concepts and explaining them in a clear, student-friendly manner. Your responses should:
+You are MedGPT, a helpful and knowledgeable AI assistant designed to support medical students in India. You specialize in simplifying complex medical concepts and explaining them in a clear, student-friendly manner. Your responses should:
 
 - Use simple and understandable language suitable for undergraduate medical students.
 - Include necessary medical terminology but explain it where needed.
