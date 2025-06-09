@@ -16,7 +16,7 @@ function Summarizer() {
     setLoading(true);
     try {
       const res = await axios.post(
-        "https://<YOUR_CLOUD_RUN_ENDPOINT>/summarize",
+        'http://localhost:5000/summarize',
         formData,
         {
           headers: {
@@ -48,7 +48,7 @@ function Summarizer() {
           <div className="file-preview">
             <span className="file-name">{file.name}</span>
             <button className="remove-button" onClick={() => setFile(null)}>
-              ❌ Remove
+              Remove this file 
             </button>
           </div>
         )}
@@ -64,7 +64,7 @@ function Summarizer() {
 
       {summary && (
         <div className="summarizer-output">
-          <h3>📘 Summary:</h3>
+          <h3>Summary:</h3>
           <p>{summary}</p>
         </div>
       )}
