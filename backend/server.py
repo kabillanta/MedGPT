@@ -28,6 +28,8 @@ Stay concise when needed, but never compromise clarity. Always ensure the answer
 ''')]
 
 @app.route('/chat', methods=['POST'])
+
+
 def chat():
     data = request.get_json()
     query = data.get('text', '')
@@ -50,5 +52,4 @@ def chat():
     return jsonify({"response": bot_response})
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))

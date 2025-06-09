@@ -24,7 +24,7 @@ function Chatbot() {
       setMessages((prev) => [...prev, errorMessage]);
     }
 
-    setInput('');
+    
   };
 
   return (

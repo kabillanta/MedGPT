@@ -198,3 +198,59 @@ input[type="file"] {
     padding: 10px 16px;
   }
 }
+
+
+
+
+.summarizer-container {
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  max-width: 100%;
+  margin: auto;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.summarizer-input {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.summarizer-button {
+  padding: 10px 18px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #1e88e5;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.summarizer-button:hover {
+  background-color: #1565c0;
+}
+
+.summarizer-button:disabled {
+  background-color: #90caf9;
+  cursor: not-allowed;
+}
+
+.summarizer-output {
+  margin-top: 10px;
+  white-space: pre-wrap;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  width: 100%;
+}
