@@ -1,8 +1,9 @@
 /* ===== Global Layout ===== */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   background-color: #f2f7fa;
 }
 
@@ -107,8 +108,6 @@ body, html {
   margin: 6px 0;
 }
 
-
-
 /* User message – Right aligned */
 .medgpt-message.user {
   background: #d6e4ff;
@@ -116,7 +115,7 @@ body, html {
   align-self: flex-end;
   text-align: right;
   padding-top: 10px;
-  padding-right: 20px ;
+  padding-right: 20px;
   padding-bottom: 10px;
   padding-left: 20px;
 
@@ -199,9 +198,6 @@ input[type="file"] {
   }
 }
 
-
-
-
 .summarizer-container {
   padding: 20px;
   background: #ffffff;
@@ -253,4 +249,57 @@ input[type="file"] {
   padding: 15px;
   border-radius: 8px;
   width: 100%;
+}
+
+.summarizer-file-upload {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.custom-upload-button {
+  background-color: #1e88e5;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.custom-upload-button:hover {
+  background-color: #1565c0;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.file-name {
+  font-size: 0.95rem;
+  color: #333;
+  margin-top: 5px;
+}
+
+
+.file-preview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.remove-button {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.remove-button:hover {
+  background-color: #d32f2f;
 }
