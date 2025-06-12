@@ -54,6 +54,9 @@ app.post("/chat", async (req, res) => {
   }
 });
 
+
+// Summarization endpoint (currently commented out for testing purposes)
+
 // app.post("/summarize", upload.single("file"), async (req, res) => {
 //   if (!req.file) {
 //     return res.status(400).json({ error: "No file provided" });
