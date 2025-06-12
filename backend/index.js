@@ -2,9 +2,9 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import multer from "multer";
-import pdfParse from "pdf-parse";
+// import pdfParse from "pdf-parse";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { SystemMessage, HumanMessage, AIMessage } from "langchain/schema";
+import { SystemMessage, HumanMessage, AIMessage } from "langchain-core/messages";
 
 dotenv.config();
 const app = express();
@@ -54,47 +54,47 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-app.post("/summarize", upload.single("file"), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No file provided" });
-  }
-  try {
-    const data = await pdfParse(req.file.buffer);
-    const text = data.text;
+// app.post("/summarize", upload.single("file"), async (req, res) => {
+//   if (!req.file) {
+//     return res.status(400).json({ error: "No file provided" });
+//   }
+//   try {
+//     const data = await pdfParse(req.file.buffer);
+//     const text = data.text;
 
-    const systemPrompt = new SystemMessage({
-      content: 
-      `
-      You are MedGPT, an AI tutor specialized in helping undergraduate medical students in India understand and revise complex concepts quickly and effectively.
+//     const systemPrompt = new SystemMessage({
+//       content: 
+//       `
+//       You are MedGPT, an AI tutor specialized in helping undergraduate medical students in India understand and revise complex concepts quickly and effectively.
 
-        Summarize the following medical study material in a way that is:
+//         Summarize the following medical study material in a way that is:
 
-        - Clear and student-friendly for quick exam preparation
-        - Structured like a university answer (definition → classification → causes → pathophysiology → clinical features → diagnosis → treatment → important points)
-        - Based on standard Indian medical textbooks (Harrison’s, Guyton, Robbins, etc.)
-        - Inclusive of mnemonics, diagrams (describe if needed), and frequently asked exam points
-        - Written in concise but academically accurate language
-        - Helpful even if the student hasn’t prepared earlier
+//         - Clear and student-friendly for quick exam preparation
+//         - Structured like a university answer (definition → classification → causes → pathophysiology → clinical features → diagnosis → treatment → important points)
+//         - Based on standard Indian medical textbooks (Harrison’s, Guyton, Robbins, etc.)
+//         - Inclusive of mnemonics, diagrams (describe if needed), and frequently asked exam points
+//         - Written in concise but academically accurate language
+//         - Helpful even if the student hasn’t prepared earlier
 
-        Make sure the summary allows the student to write a full exam answer based solely on this explanation.
+//         Make sure the summary allows the student to write a full exam answer based solely on this explanation.
 
-        --- BEGIN STUDY MATERIAL ---
-        ${text}
-        --- END STUDY MATERIAL ---
-      `,
-    });
+//         --- BEGIN STUDY MATERIAL ---
+//         ${text}
+//         --- END STUDY MATERIAL ---
+//       `,
+//     });
 
-    const userPrompt = new HumanMessage({
-      content: `Summarize the following medical study material for quick exam revision:\n\n${text}`,
-    });
+//     const userPrompt = new HumanMessage({
+//       content: `Summarize the following medical study material for quick exam revision:\n\n${text}`,
+//     });
 
-    const resp = await summarizeModel.invoke([systemPrompt, userPrompt]);
-    const summary = resp.content || "Unable to Summarize.";
-    return res.json({ summary });
-  } catch (err) {
-    return res.status(500).json({ error: String(err) });
-  }
-});
+//     const resp = await summarizeModel.invoke([systemPrompt, userPrompt]);
+//     const summary = resp.content || "Unable to Summarize.";
+//     return res.json({ summary });
+//   } catch (err) {
+//     return res.status(500).json({ error: String(err) });
+//   }
+// });
 
 const PORT = process.env.PORT ?? 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
